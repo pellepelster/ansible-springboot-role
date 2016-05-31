@@ -8,7 +8,7 @@ provisioner:
   name: shell
   name: ansible_playbook
   playbook: playbook_default.yml
-  roles_path: ../springboot-role/
+  roles_path: ../ansible-springboot-role/
   hosts: all
   require_ansible_repo: false
   require_ansible_omnibus: true
