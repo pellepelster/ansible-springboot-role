@@ -1,4 +1,4 @@
-spring_boot_application_id: application1
+spring_boot_application_id: springbootapplication
 
 spring_boot_file: "{{ spring_boot_application_id }}.jar"
 spring_boot_file_source: ""
