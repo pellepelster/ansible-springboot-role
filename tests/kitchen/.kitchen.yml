@@ -17,6 +17,14 @@ provisioner:
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
 
 platforms:
+- name: debian-7.9
+- name: debian-8.3  
+- name: fedora-22
+- name: fedora-23
+- name: opensuse-13.2
+  provisioner:
+    require_ansible_repo: true
+    require_ansible_omnibus: false
 - name: ubuntu-14.04
 - name: ubuntu-16.04
   provisioner:
