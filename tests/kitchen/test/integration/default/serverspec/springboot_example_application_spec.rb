@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "spring boot example appplication" do
+	
   let(:host) { URI.parse('http://localhost:8080') }
 
   it "Greetings from Spring Boot" do

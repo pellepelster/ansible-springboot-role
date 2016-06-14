@@ -11,6 +11,9 @@
 - include: " {{ java8_install_tasks_optional.stat.path }}"
   when: java8_install_tasks_optional.stat.exists
 
+- debug: msg="no java8 install tasks found for {{ ansible_distribution }}"
+  when: not java8_install_tasks_optional.stat.exists
+
 - name: "create spring-boot group"
   group: name={{ spring_boot_username }}
   
@@ -64,4 +67,11 @@
 - name: "start spring-boot service"
   service: name={{ spring_boot_application_id }} state=restarted
 
-- debug: msg="spring-boot application {{ spring_boot_application_id }}"
+- name: "wait for application to come up"
+  uri:
+    url: "http://127.0.0.1:{{spring_boot_http_port}}/"
+    status_code: 200
+  register: result
+  until: result.status == 200
+  retries: 60
+  delay: 10
