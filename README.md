@@ -38,6 +38,7 @@ springBoot {
 
 ```
 
+Please, see more examples in the article [Installing Spring Boot applications](https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html).
 
 Role Variables
 --------------
@@ -50,6 +51,9 @@ spring_boot_application_id: "springbootapplication"
 
 # the HTTP port the Spring Boot application should listen to
 spring_boot_http_port: 8080
+
+# the Spring Boot application file to copy from
+spring_boot_file_source: "/tmp/springbootapplication-1.0.0.jar"
 ```
 
 Dependencies
@@ -70,6 +74,15 @@ roles:
   }
 ```
 
+To use on a remote environment (then it'll copy from a path on the server):
+
+```
+hosts: my_server
+roles:
+- { role: ansible-springboot-role, 
+    spring_boot_file_source: '/tmp/example-application.jar' 
+  }
+```
 License
 -------
 
